@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Khambra Developers and Construction</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #0A1F44;
+    color: #ECE9D8;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #D4AF37;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #FFD54F;
+    outline: none;
+  }
+
+  header {
+    background: #061533;
+    padding: 2rem 1.5rem 3rem;
+    text-align: center;
+    border-bottom: 2px solid #D4AF37;
+    position: relative;
+  }
+
+  /* Logo placeholder */
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    background: #D4AF37;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #061533;
+    box-shadow: 0 0 15px #FFD54F;
+    user-select: none;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    letter-spacing: 3px;
+    color: #FFD54F;
+    text-shadow: 0 0 8px #D4AF37;
+  }
+
+  header p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #CFC49B;
+    letter-spacing: 1.5px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    background: #061533;
+    padding: 1rem 0;
+    border-bottom: 1px solid #334466;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav a {
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1.2px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    color: #FFD54F;
+    background: rgba(212, 175, 55, 0.2);
+    outline: none;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    margin-bottom: 4rem;
+    background: #11294D;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    border: 1.5px solid #D4AF37;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #FFD54F;
+    border-bottom: 3px solid #D4AF37;
+    padding-bottom: 0.3rem;
+    letter-spacing: 2px;
+  }
+
+  section p, section ul {
+    font-size: 1.15rem;
+    color: #ECE9D8;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #FFD54F;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* Image Gallery */
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover,
+  .gallery img:focus {
+    transform: scale(1.05);
+    outline: none;
+  }
+
+  /* Contact Form */
+
+  form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    outline: 2px solid #FFD54F;
+    background: #1c396f;
+    color: #fff;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  button {
+    background: #D4AF37;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    color: #061533;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+  }
+
+  button:hover,
+  button:focus {
+    background: #FFD54F;
+    outline: none;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: #061533;
+    color: #CFC49B;
+    font-size: 0.9rem;
+    letter-spacing: 1.2px;
+    border-top: 2px solid #D4AF37;
+  }
+
+  /* Responsive */
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    main {
+      padding: 0 1rem;
+    }
+    section {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2.2rem;
+    }
+    section h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" aria-label="Khambra logo" role="img">KD</div>
+    <h1>Khambra Developers and Construction</h1>
+    <p>A Part of Indian Steel Pty Ltd — Excellence in Australia & India</p>
+  </header>
+
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#locations">Locations</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about" tabindex="0">
+      <h2>About Us</h2>
+      <p>Khambra Developers and Construction is a licensed leader in construction management, consultancy, and procurement, operating across Australia and India. Backed by Indian Steel Pty Ltd, we deliver unmatched quality in custom-built homes, architectural design, and engineering consultancy through a premier peer network connecting both continents.</p>
+    </section>
+
+    <section id="services" tabindex="0">
+      <h2>Our Services</h2>
+      <ul>
+        <li>End-to-end Construction Management & Consultancy</li>
+        <li>Procurement Solutions with Competitive Pricing</li>
+        <li>Commission-Based B2B Business Connections</li>
+        <li>Custom Built Homes & Luxury Architectural Design</li>
+        <li>High-End Engineering Consultancy with Indian Peer Network</li>
+      </ul>
+    </section>
+
+    <section id="locations" tabindex="0">
+      <h2>Our Locations</h2>
+      <ul>
+        <li>Melbourne, Victoria</li>
+        <li>Brisbane, Queensland</li>
+        <li>Townsville, Queensland</li>
+        <li>Darwin, Northern Territory</li>
+      </ul>
+    </section>
+
+    <section id="gallery" tabindex="0">
+      <h2>Project Gallery</h2>
+      <div class="gallery" aria-label="Gallery of projects">
+        <img src="https://images.unsplash.com/photo-1560448204-6c01ee34074f?auto=format&fit=crop&w=400&q=80" alt="Modern luxury building exterior" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Architectural blueprint on table" />
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=80" alt="Construction workers collaborating" />
+        <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80" alt="Luxury custom home interior" />
+      </div>
+    </section>
+
+    <section id="contact" tabindex="0">
+      <h2>Contact Us</h2>
+      <p><strong>Phone (Australia):</strong> 0412 225 131</p>
+      <p><strong>Phone (India):</strong> +91 99969 11464</p>
+      <p><strong>Email:</strong> <a href="mailto:info@khambraconstructions.com">info@khambraconstructions.com</a></p>
+      <p><strong>Website:</strong> <a href="https://khambraconstructions.com" target="_blank" rel="noopener">khambraconstructions.com</a></p>
+
+      <form aria-label="Contact form" onsubmit="alert('Thank you for your message! We will get back to you soon.'); return false;">
+        <input type="text" name="name" placeholder="Your Name" required aria-required="true" />
+        <input type="email" name="email" placeholder="Your Email" required aria-required="true" />
+        <textarea name="message" placeholder="Your Message" required aria-required="true"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Khambra Developers and Construction — A Part of Indian Steel Pty Ltd. All rights reserved.
+  </footer>
+
+<script>
+  // Animate sections on scroll
+  function revealSections() {
+    const sections = document.querySelectorAll('section');
+    const windowBottom = window.innerHeight;
+
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < windowBottom - 100) {
+        section.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealSections);
+  window.addEventListener('load', revealSections);
+</script>
+
+</body>
+</html>
